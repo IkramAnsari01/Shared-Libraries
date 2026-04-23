@@ -5,7 +5,6 @@ def call() {
 
         echo "Running Trivy scan..."
         docker run --rm \
-            -v /var/run/docker.sock:/var/run/docker.sock \
             -v \$(pwd):/workspace \
             -w /workspace \
             aquasec/trivy:latest fs . \
