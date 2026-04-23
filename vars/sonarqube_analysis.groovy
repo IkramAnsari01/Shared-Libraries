@@ -1,5 +1,11 @@
 def call(String SonarQubeAPI, String Projectname, String ProjectKey){
   withSonarQubeEnv("${SonarQubeAPI}"){
-      sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=${Projectname} -Dsonar.projectKey=${ProjectKey} -X"
+      bat """
+      %SONAR_HOME%\\bin\\sonar-scanner.bat ^
+      -Dsonar.projectName=${Projectname} ^
+      -Dsonar.projectKey=${ProjectKey} ^
+      -X
+      """
   }
 }
+
