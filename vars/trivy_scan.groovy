@@ -5,13 +5,12 @@ def call() {
 
         echo "Running Trivy scan..."
         docker run --rm \
-            -v \$(pwd):/workspace \
-            -w /workspace \
-            aquasec/trivy:latest fs . \
+            -v "\$(pwd):/workspace" \
+            aquasec/trivy:latest fs /workspace \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
             --format table \
-            --output trivy-report.txt \
+            --output /workspace/trivy-report.txt \
             --exit-code 0
 
         echo "Removing Trivy image..."
